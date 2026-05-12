@@ -48,10 +48,8 @@ export default defineConfig({
         }),
       ],
       output: {
-        manualChunks(id) {
-          if (!id.includes("node_modules")) return;
-          if (id.includes("node_modules/echarts")) return "echarts-vendor";
-          if (id.includes("node_modules/zrender")) return "zrender";
+        manualChunks: {
+          echarts: ["echarts", "zrender"],
         },
       },
       input: {
