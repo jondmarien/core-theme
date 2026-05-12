@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark fixed-top border-bottom border-warning-subtle" style="background: color-mix(in srgb, #0d0805 88%, transparent); backdrop-filter: blur(6px);">
   <div class="container">
-    <a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand">
+    <a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand fw-semibold fst-italic">
       {% if Configs.ctf_logo %}
         <img
             class="img-responsive ctf_logo"
@@ -49,14 +49,14 @@
         {% if Configs.account_visibility != 'admins' and Configs.score_visibility != 'admins' %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('scoreboard.listing') }}">
-              {% trans %}Scoreboard{% endtrans %}
+            {% trans %}Scoreboard{% endtrans %}
             </a>
           </li>
         {% endif %}
 
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('challenges.listing') }}">
-            {% trans %}Challenges{% endtrans %}
+            {% trans %}Quests{% endtrans %}
           </a>
         </li>
       </ul>

@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron border-bottom border-warning-subtle">
     <div class="container">
       <h1>
-        {% trans %}Challenges{% endtrans %}
+        {% trans %}Quests{% endtrans %}
       </h1>
+      <p class="text-warning-emphasis mb-0">Seek each riddle, claim each relic, and carve your place on the board.</p>
     </div>
   </div>
 
@@ -44,9 +45,9 @@
             <div class="category-challenges d-flex flex-column">
               <div class="challenges-row row">
                 <template x-for="(c, idx) in getChallenges(category)" :key="c.id">
-                  <div class="col-sm-6 col-md-4 col-lg-3 my-3">
+                  <div class="col-12 my-2">
                     <button
-                        class="challenge-button btn btn-dark w-100 h-100"
+                        class="challenge-button btn w-100 text-start border border-warning-subtle bg-dark-subtle py-3"
                         :class="[
                           c.solved_by_me ? 'challenge-solved' : '',
                           ...c.tags.map((tag) => `tag-${tag.value.replace(/ /g, '-')}`),
@@ -54,9 +55,12 @@
                         :value="c.id" @click="loadChallenge(c.id)"
                     >
 
-                      <div class="challenge-inner my-3">
-                        <p x-text="c.name"></p>
-                        <span x-text="c.value"></span>
+                      <div class="challenge-inner d-flex justify-content-between align-items-center">
+                        <div>
+                          <p class="mb-1 fw-semibold" x-text="c.name"></p>
+                          <small class="text-secondary">Open quest details and submit your flag in the chamber.</small>
+                        </div>
+                        <span class="badge bg-warning text-dark" x-text="`${c.value} GP`"></span>
                       </div>
                     </button>
                   </div>

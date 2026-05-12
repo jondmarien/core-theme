@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron border-bottom border-warning-subtle">
     <div class="container">
       <h1>{{ user.name }}</h1>
 
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container py-4">
     {% include "components/errors.html" %}
 
     {% set solves = user.solves %}
@@ -116,8 +116,8 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3>Solves</h3>
-          <table class="table table-striped align-middle">
+          <h3 class="fst-italic">{% trans %}Quest Log{% endtrans %}</h3>
+          <table class="table table-striped align-middle border border-warning-subtle">
             <thead>
             <tr>
               <th>{% trans %}Challenge{% endtrans %}</th>
@@ -219,13 +219,16 @@
 {% endblock %}
 
 {% block scripts %}
+  {% set user_payload = {
+    "type": "user",
+    "id": user.id,
+    "name": user.name,
+    "account_id": user.id,
+  } %}
+  <script id="user-payload" type="application/json">{{ user_payload | tojson }}</script>
   <script>
-      window.USER = {{ {
-      'type': 'user',
-      'id': user.id,
-      'name': user.name,
-      'account_id': user.id,
-    } | tojson }};
+      const userPayloadNode = document.getElementById("user-payload");
+      window.USER = userPayloadNode ? JSON.parse(userPayloadNode.textContent || "{}") : {};
   </script>
 
   {{ Assets.js("assets/js/users/public.js") }}

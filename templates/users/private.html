@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron border-bottom border-warning-subtle">
     <div class="container">
       <h1>{{ user.name }}</h1>
 
@@ -85,7 +85,7 @@
       </div>
     </div>
   </div>
-  <div class="container">
+  <div class="container py-4">
     {% include "components/errors.html" %}
 
     {% set solves = user.solves %}
@@ -95,7 +95,7 @@
       {% if awards %}
         <div class="row">
           <div class="col-md-12">
-            <h3>{% trans %}Awards{% endtrans %}</h3>
+          <h3 class="fst-italic">{% trans %}Awards{% endtrans %}</h3>
 
           </div>
           {% for award in awards %}
@@ -117,8 +117,8 @@
 
       <div class="row">
         <div class="col-md-12">
-          <h3>{% trans %}Solves{% endtrans %}</h3>
-          <table class="table table-striped align-middle">
+          <h3 class="fst-italic">{% trans %}Quest Log{% endtrans %}</h3>
+          <table class="table table-striped align-middle border border-warning-subtle">
             <thead>
             <tr>
               <th>{% trans %}Challenge{% endtrans %}</th>

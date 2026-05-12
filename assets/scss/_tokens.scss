@@ -1,0 +1,32 @@
+$tavern-pitch: #0d0805;
+$tavern-ink: #1a120a;
+$tavern-stone: #2e2218;
+$tavern-leather: #5a3e26;
+$tavern-fire: #e0a168;
+$tavern-gold: #e8c860;
+$tavern-parchment: #ebdbb8;
+
+$status-success: #66a85b;
+$status-warning: #d5a35d;
+$status-danger: #b14f46;
+$status-info: #90a8c2;
+
+:root {
+  --tavern-pitch: oklch(0.12 0.015 60);
+  --tavern-ink: oklch(0.18 0.02 60);
+  --tavern-stone: oklch(0.28 0.025 60);
+  --tavern-leather: oklch(0.42 0.08 50);
+  --tavern-fire: oklch(0.72 0.18 55);
+  --tavern-gold: oklch(0.86 0.16 95);
+  --tavern-parchment: oklch(0.92 0.04 80);
+
+  --success: oklch(0.68 0.16 145);
+  --warning: oklch(0.74 0.16 70);
+  --danger: oklch(0.62 0.2 25);
+  --info: oklch(0.78 0.1 240);
+
+  --font-display: "Cormorant Garamond", "Quintessential", Georgia, serif;
+  --font-body: "Crimson Pro", "EB Garamond", Georgia, serif;
+  --font-flavor: "MedievalSharp", cursive;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+}

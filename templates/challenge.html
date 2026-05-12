@@ -47,11 +47,11 @@
       <div>
         <div class="tab-content">
           <div role="tabpanel" class="tab-pane fade show active" id="challenge">
-            <h2 class="challenge-name text-center pt-3">
+            <h2 class="challenge-name text-center pt-3 fst-italic">
               {{ challenge.name }}
             </h2>
-            <h3 class="challenge-value text-center">
-              {{ challenge.value }}
+            <h3 class="challenge-value text-center text-warning">
+              {{ challenge.value }} GP
             </h3>
 
 
@@ -85,7 +85,8 @@
             </small>
             {% endif %}
 
-            <span class="challenge-desc">{% block description %}{{ challenge.html }}{% endblock %}</span>
+            <hr class="border-warning-subtle">
+            <span class="challenge-desc d-block mb-3">{% block description %}{{ challenge.html }}{% endblock %}</span>
 
             {% if challenge.connection_info %}
               <div class="mb-2">
@@ -104,7 +105,7 @@
             {% endif %}
 
             {% if hints %}
-              <div class="challenge-hints hint-row row">
+              <div class="challenge-hints hint-row row border-top border-warning-subtle pt-2 mt-3">
                 <div class="col-12 mb-3">
                 {% for hint in hints | sort(attribute="cost") %}
                   <div x-data="Hint" x-init="id = {{ hint.id }}">
@@ -161,6 +162,7 @@
               </p>
             </template>
 
+            <hr class="border-warning-subtle mt-3">
             <div class="row submit-row">
               <div class="col-12 col-sm-8">
                 {% block input %}

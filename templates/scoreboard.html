@@ -1,11 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron border-bottom border-warning-subtle">
     <div class="container">
       <h1>
         {% trans %}Scoreboard{% endtrans %}
       </h1>
+      <p class="text-warning-emphasis mb-0">The chronicle of victories and hard-won points.</p>
     </div>
   </div>
   <div class="container">
@@ -30,7 +31,7 @@
       </template>
 
       <div class="col-md-12" x-show="standings.length">
-        <table class="table table-striped align-middle">
+        <table class="table table-striped align-middle border border-warning-subtle">
           <thead>
           <tr>
             <th style="width: 10px">{% trans %}Place{% endtrans %}</th>
@@ -42,14 +43,14 @@
           <tbody>
             <template x-for="(standing, index) in standings.filter(i => activeBracket ? i.bracket_id==activeBracket : true)">
               <tr>
-                <th scope="row" class="text-center" x-text="index + 1"></th>
+                <th scope="row" class="text-center text-warning" x-text="index + 1"></th>
                 <td class="text-start">
                   <a :href="standing.account_url" x-text="standing.name"></a>
                   <template x-if="standing.bracket_name">
                     <span class="badge bg-secondary ms-2" x-text="standing.bracket_name"></span>
                   </template>
                 </td>
-                <td x-text="standing.score"></td>
+                <td class="fw-semibold text-warning-emphasis" x-text="`${standing.score} GP`"></td>
               </tr>
             </template>
           </tbody>

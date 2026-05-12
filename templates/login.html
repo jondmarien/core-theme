@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron border-bottom border-warning-subtle">
     <div class="container">
       <h1>
         {% trans %}Login{% endtrans %}
@@ -9,9 +9,10 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container py-4">
     <div class="row">
       <div class="col-md-8 col offset-md-2 col-lg-6 offset-lg-3">
+        <div class="rounded-3 border border-warning-subtle bg-dark-subtle p-4">
         {% include "components/errors.html" %}
 
         {% if integrations.mlc() %}
@@ -42,13 +43,14 @@
               </div>
 
               <div class="col-6 col-md-4">
-                {{ form.submit(class="btn btn-block btn-primary w-100") }}
+                {{ form.submit(class="btn btn-block btn-warning w-100") }}
               </div>
             </div>
 
             {{ form.nonce() }}
           </form>
         {% endwith %}
+        </div>
       </div>
     </div>
   </div>

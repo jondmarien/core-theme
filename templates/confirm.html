@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <div class="jumbotron">
+  <div class="jumbotron border-bottom border-warning-subtle">
     <div class="container">
       <h1>
         {% trans %}Confirm{% endtrans %}
@@ -9,9 +9,10 @@
     </div>
   </div>
 
-  <div class="container">
+  <div class="container py-4">
     <div class="row">
       <div class="col-md-10 col-lg-8 col-xl-6 offset-md-1 offset-lg-2 offset-xl-3">
+        <div class="rounded-3 border border-warning-subtle bg-dark-subtle p-4">
         {% include "components/errors.html" %}
 
         {% if request.args.get('flow') == "init" %}
@@ -44,7 +45,7 @@
           <form method="POST" action="{{ url_for('auth.confirm') }}">
             <div class="row">
               <div class="mb-3 col-md-6">
-                {{ form.submit(class="btn btn-primary w-100 p-2") }}
+                {{ form.submit(class="btn btn-warning w-100 p-2") }}
               </div>
               <div class="mb-3 col-md-6">
                 <a href="{{ url_for('views.settings') }}" class="btn btn-secondary w-100 p-2">
@@ -55,6 +56,7 @@
             </div>
           </form>
         {% endwith %}
+        </div>
       </div>
     </div>
   </div>

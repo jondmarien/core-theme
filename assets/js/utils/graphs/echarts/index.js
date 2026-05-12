@@ -4,14 +4,10 @@ import {
   TitleComponent,
   TooltipComponent,
   GridComponent,
-  DatasetComponent,
-  TransformComponent,
   LegendComponent,
   ToolboxComponent,
   DataZoomComponent,
 } from "echarts/components";
-// Features like Universal Transition and Label Layout
-import { LabelLayout, UniversalTransition } from "echarts/features";
 // Import the Canvas renderer
 // Note that introducing the CanvasRenderer or SVGRenderer is a required step
 import { CanvasRenderer } from "echarts/renderers";
@@ -22,13 +18,9 @@ echarts.use([
   TitleComponent,
   TooltipComponent,
   GridComponent,
-  DatasetComponent,
-  TransformComponent,
   LegendComponent,
   ToolboxComponent,
   DataZoomComponent,
-  LabelLayout,
-  UniversalTransition,
   CanvasRenderer,
 ]);
 

@@ -16,46 +16,51 @@
 
   {{ Assets.js("assets/js/color_mode_switcher.js", type=None) }}
 
+  {% set init_payload = {
+    "urlRoot": request.script_root,
+    "csrfNonce": Session.nonce,
+    "userMode": Configs.user_mode,
+    "userId": Session.id,
+    "userName": User.name,
+    "userEmail": User.email,
+    "userVerified": User.verified,
+    "teamId": Team.id,
+    "teamName": Team.name,
+    "start": Configs.start,
+    "end": Configs.end,
+    "themeSettings": Configs.theme_settings,
+    "eventSounds": [
+      "/themes/core/static/sounds/notification.webm",
+      "/themes/core/static/sounds/notification.mp3",
+    ],
+  } %}
+  <script id="init-payload" type="application/json">{{ init_payload | tojson }}</script>
   <script type="text/javascript">
-      window.init = {
-          'urlRoot': "{{ request.script_root }}",
-          'csrfNonce': "{{ Session.nonce }}",
-          'userMode': "{{ Configs.user_mode }}",
-          'userId': {{ Session.id }},
-          'userName': {{ User.name | tojson }},
-          'userEmail': {{ User.email | tojson }},
-          'userVerified': {{ User.verified | tojson }},
-          'teamId': {{ Team.id | tojson }},
-          'teamName': {{ Team.name | tojson }},
-          'start': {{ Configs.start | tojson }},
-          'end': {{ Configs.end | tojson }},
-          'themeSettings': {{ Configs.theme_settings | tojson }},
-          'eventSounds': [
-            "/themes/core/static/sounds/notification.webm",
-            "/themes/core/static/sounds/notification.mp3",
-          ],
-      }
+      const initPayloadNode = document.getElementById("init-payload");
+      window.init = initPayloadNode ? JSON.parse(initPayloadNode.textContent || "{}") : {};
   </script>
 
   {{ Configs.theme_header }}
 </head>
-<body>
+<body class="fantasy-theme">
 {% include "components/navbar.html" %}
 
-<main role="main">
+<main role="main" class="pt-5">
   {% block content %}
   {% endblock %}
 </main>
 
 {% include "components/snackbar.html" %}
 
-<footer class="footer">
-  <div class="container text-center">
-    <a href="https://ctfd.io" class="text-secondary">
-      <small class="text-muted">
-        {% trans %}Powered by CTFd{% endtrans %}
-      </small>
-    </a>
+<footer class="footer border-top border-warning-subtle">
+  <div class="container text-center py-3">
+    <small class="text-warning-emphasis d-block">FantasyCTF Theme</small>
+    <small class="text-secondary d-block">
+      Originally designed for ISSessions Fantasy 2026 CTF
+    </small>
+    <small class="text-muted d-block">
+      {% trans %}Powered by CTFd{% endtrans %}
+    </small>
   </div>
 </footer>
 

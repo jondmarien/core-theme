@@ -1,7 +1,7 @@
 {
-  "name": "core-beta",
+  "name": "fantasy-ctfd-theme",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "dev": "vite build --watch --mode=development",
     "build": "vite build",

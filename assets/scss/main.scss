@@ -1,5 +1,27 @@
+@use "tokens" as *;
 @use "bootstrap/scss/bootstrap" as * with (
-  $info: #5c728f
+  $primary: $tavern-fire,
+  $secondary: $tavern-gold,
+  $dark: $tavern-ink,
+  $body-bg: $tavern-pitch,
+  $body-color: $tavern-parchment,
+  $font-family-base: (
+    "Crimson Pro",
+    "EB Garamond",
+    Georgia,
+    serif,
+  ),
+  $font-family-monospace: (
+    "JetBrains Mono",
+    "Fira Code",
+    monospace,
+  ),
+  $info: $status-info,
+  $success: $status-success,
+  $warning: $status-warning,
+  $danger: $status-danger,
+  $enable-gradients: false,
+  $enable-shadows: false
 );
 
 @use "includes/components/table";
@@ -19,8 +41,16 @@
 
 h1,
 h2 {
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-style: italic;
   letter-spacing: 2px;
+}
+
+body {
+  background: var(--tavern-pitch);
+  color: var(--tavern-parchment);
+  font-family: var(--font-body);
 }
 
 a {
